@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Card Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 80%;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      will-change: transform;
+    }
+
+    .card {
+      min-width: 300px;
+      margin: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .card-description {
+      font-size: 1em;
+      color: #666;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .nav button {
+      background: #0072ff;
+      border: none;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s;
+    }
+
+    .nav button:hover {
+      background: #005bb5;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <div class="card">
+        <img src="https://via.placeholder.com/300" alt="Image 1">
+        <div class="card-content">
+          <div class="card-title">Card Title 1</div>
+          <div class="card-description">Description for card 1.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300" alt="Image 2">
+        <div class="card-content">
+          <div class="card-title">Card Title 2</div>
+          <div class="card-description">Description for card 2.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300" alt="Image 3">
+        <div class="card-content">
+          <div class="card-title">Card Title 3</div>
+          <div class="card-description">Description for card 3.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300" alt="Image 4">
+        <div class="card-content">
+          <div class="card-title">Card Title 4</div>
+          <div class="card-description">Description for card 4.</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <button id="prev">&lt;</button>
+      <button id="next">&gt;</button>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+
+    let scrollAmount = 0;
+
+    next.addEventListener('click', () => {
+      console.log('hi next')
+      scrollAmount += 300;
+      slider.scroll({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+
+    prev.addEventListener('click', () => {
+      console.log('hi prev')
+      scrollAmount -= 300;
+      slider.scroll({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

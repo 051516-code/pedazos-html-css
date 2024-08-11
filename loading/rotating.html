@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Loader - 3D Cube</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #282c34, #4a4e69, #6c5b7b, #c06c84);
+      background-size: 600% 600%;
+      animation: gradient 15s ease infinite;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(45deg) rotateY(45deg);
+      animation: rotate 5s infinite linear;
+    }
+
+    .cube div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      border: 2px solid #282c34;
+      opacity: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cube div img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .front { transform: translateZ(50px); }
+    .back { transform: rotateY(180deg) translateZ(50px); }
+    .right { transform: rotateY(90deg) translateZ(50px); }
+    .left { transform: rotateY(-90deg) translateZ(50px); }
+    .top { transform: rotateX(90deg) translateZ(50px); }
+    .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+    @keyframes rotate {
+      from { transform: rotateX(45deg) rotateY(45deg); }
+      to { transform: rotateX(45deg) rotateY(405deg); }
+    }
+
+    .text {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #fff;
+      animation: typing 4s steps(10) infinite, blinkCaret 0.75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blinkCaret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="cube">
+      <div class="front"><img src="https://via.placeholder.com/80x80" alt="Logo 1"></div>
+      <div class="back"><img src="https://via.placeholder.com/80x80" alt="Logo 2"></div>
+      <div class="right"><img src="https://via.placeholder.com/80x80" alt="Logo 3"></div>
+      <div class="left"><img src="https://via.placeholder.com/80x80" alt="Logo 4"></div>
+      <div class="top"><img src="https://via.placeholder.com/80x80" alt="Logo 5"></div>
+      <div class="bottom"><img src="https://via.placeholder.com/80x80" alt="Logo 6"></div>
+    </div>
+    <div class="text">Cargando...</div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.body.innerHTML = '<h1>Contenido cargado</h1>';
+      document.body.style.background = '#fff';
+      document.body.style.color = '#000';
+      document.body.style.display = 'flex';
+      document.body.style.justifyContent = 'center';
+      document.body.style.alignItems = 'center';
+      document.body.style.height = '100vh';
+    }, 3000);
+  </script>
+</body>
+</html>

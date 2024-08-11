@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Loader</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f0f0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .loader-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+
+    .ball {
+      width: 50px;
+      height: 50px;
+      background-color: #0072ff;
+      border-radius: 50%;
+      position: absolute;
+      animation: bounce 1.5s infinite;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      background: url('./img/logo_aio.jpg') no-repeat center/contain;
+      opacity: 0;
+      position: absolute;
+      animation: logoFadeIn 0.5s forwards;
+      animation-delay: 3s; /* Adjust this to match the bounce animation duration */
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-100px);
+      }
+    }
+
+    @keyframes logoFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader-container">
+    <div class="ball"></div>
+    <div class="logo"></div>
+  </div>
+</body>
+</html>
